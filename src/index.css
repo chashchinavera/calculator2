@@ -1,9 +1,5 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: white;
-}
+/* body */
+@import url(./vendor/body/body.css);
 
+/* fonts */
 @import url(./vendor/fonts/fonts.css);
