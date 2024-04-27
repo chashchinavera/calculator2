@@ -3,3 +3,9 @@
 
 /* fonts */
 @import url(./vendor/fonts/fonts.css);
+
+/* app */
+@import url(./components/App/App.css);
+
+/* button */
+@import url(./components/Button/Button.css);
