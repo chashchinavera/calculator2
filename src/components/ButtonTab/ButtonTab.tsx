@@ -1,0 +1,106 @@
+import React from 'react';
+import Button from '../Button/Button.tsx';
+
+function ButtonTab() {
+    return (
+        <div className='buttons'>
+            <Button
+                children='AC'
+                background='grey'
+                column='normal'
+            />
+            <Button
+                children='+/-'
+                background='grey'
+                column='normal'
+            />
+            <Button
+                children='%'
+                background='grey'
+                column='normal'
+            />
+            <Button
+                children='÷'
+                background='orange'
+                column='normal'
+            />
+            <Button
+                children='7'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='8'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='9'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='x'
+                background='orange'
+                column='normal'
+            />
+            <Button
+                children='4'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='5'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='6'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='-'
+                background='orange'
+                column='normal'
+            />
+            <Button
+                children='1'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='2'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='3'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='+'
+                background='orange'
+                column='normal'
+            />
+            <Button
+                children='0'
+                background='normal'
+                column='double'
+            />
+            <Button
+                children='.'
+                background='normal'
+                column='normal'
+            />
+            <Button
+                children='='
+                background='orange'
+                column='normal'
+            />
+        </div>
+    )
+};
+
+export default ButtonTab;

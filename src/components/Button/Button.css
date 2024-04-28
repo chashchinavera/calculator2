@@ -1,9 +1,23 @@
 .button {
-    width: 100px;
-    height: 100px;
-    background-color: aqua;
+    border-radius: 50px;
+    border: none;
+    background-color: #484848;
 }
 
 .button__children {
+    font-size: 30px;
+    padding: 15px 0;
+    margin: 0px;
+}
 
+.button__orange {
+    background-color: #fe9506;
+}
+
+.button__grey {
+    background-color: #a6a6a6;
+}
+
+.button__double {
+    grid-column: 1/3;
 }

@@ -7,9 +7,8 @@
 /* app */
 @import url(./components/App/App.css);
 
+/* buttonTab */
+@import url(./components/ButtonTab/ButtonTab.css);
+
 /* button */
 @import url(./components/Button/Button.css);
-
-* {
-    border: red 1px solid;
-}
