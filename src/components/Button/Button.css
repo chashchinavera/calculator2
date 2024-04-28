@@ -2,6 +2,16 @@
     border-radius: 50px;
     border: none;
     background-color: #484848;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button:hover {
+    opacity: 0.7;
+}
+
+.button:active {
+    opacity: 0.3;
 }
 
 .button__children {
