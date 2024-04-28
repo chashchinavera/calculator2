@@ -1,6 +1,27 @@
 .app {
   background-color: black;
-  border-radius: 30px;
-  width: 100vw;
+  border-radius: 20px;
+  max-width: 768px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  font-weight: 400;
 }
+
+.app__screen {
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.app__value {
+  color: white;
+  text-align: end;
+  font-size: 50px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.app__buttons {}

@@ -9,3 +9,7 @@
 
 /* button */
 @import url(./components/Button/Button.css);
+
+* {
+    border: red 1px solid;
+}
