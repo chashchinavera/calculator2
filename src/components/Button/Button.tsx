@@ -1,5 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
+import { numbers, signs } from '../../utils/constats.ts';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string,
@@ -32,9 +33,6 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   function handleClick() {
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
-    const signs = ['+', '-', 'x', '÷', '%'];
-
     if (numbers.some(number => {
       return number === children
     }))
@@ -43,17 +41,18 @@ const Button: React.FC<ButtonProps> = ({
     if (signs.some(sign => {
       return sign === children
     }))
-      return console.log(children);
-
+      console.log('sign');
+      updateResult(children);
+      
     if (children === '=')
-      return console.log(children);
+      console.log(children);
 
     if (children === 'ac')
       console.log('clean');
     updateResult(children);
 
     if (children === '+/-')
-      return console.log(children);
+      console.log(children);
 
     else return;
   };

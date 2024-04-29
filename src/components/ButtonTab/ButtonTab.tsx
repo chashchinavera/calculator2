@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button.tsx';
 
-function ButtonTab({ updateResult, cleanResult }) {
+function ButtonTab({ updateResult, cleanResult, addSign }) {
     return (
         <div className='buttons'>
             <Button
@@ -26,7 +26,7 @@ function ButtonTab({ updateResult, cleanResult }) {
                 children='÷'
                 background='orange'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={addSign}
             />
             <Button
                 children='7'
@@ -50,7 +50,7 @@ function ButtonTab({ updateResult, cleanResult }) {
                 children='x'
                 background='orange'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={addSign}
             />
             <Button
                 children='4'
@@ -74,7 +74,7 @@ function ButtonTab({ updateResult, cleanResult }) {
                 children='-'
                 background='orange'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={addSign}
             />
             <Button
                 children='1'
@@ -98,7 +98,7 @@ function ButtonTab({ updateResult, cleanResult }) {
                 children='+'
                 background='orange'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={addSign}
             />
             <Button
                 children='0'
