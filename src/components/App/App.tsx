@@ -16,7 +16,6 @@ function App() {
 
   function cleanResult() {
     setResult('');
-    return result;
   };
 
   return (
