@@ -1,21 +1,20 @@
 import './App.css';
 import React from 'react';
+import { useState } from 'react';
 import ButtonTab from '../ButtonTab/ButtonTab.tsx';
 
 function App() {
 
-  let result = '';
+  const [result, setResult] = useState('');
 
   function updateResult(x: string) {
-    result = result + x;
-    console.log(result);
-    return result;
+    setResult (result + x)
   };
-  
+
   return (
     <div className='app'>
       <div className='app__screen'>
-        <input className='app__value' id='result' value={result || ''} />
+        <p className='app__value' id='result'>{result}</p>
       </div>
       <ButtonTab
         updateResult={updateResult}
