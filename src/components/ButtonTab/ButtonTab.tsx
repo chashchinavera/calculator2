@@ -1,14 +1,14 @@
 import React from 'react';
 import Button from '../Button/Button.tsx';
 
-function ButtonTab({ updateResult }) {
+function ButtonTab({ updateResult, cleanResult }) {
     return (
         <div className='buttons'>
             <Button
                 children='ac'
                 background='grey'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={cleanResult}
             />
             <Button
                 children='+/-'

@@ -8,7 +8,15 @@ function App() {
   const [result, setResult] = useState('');
 
   function updateResult(x: string) {
-    setResult (result + x)
+    if (x === '.' && result === '')
+      setResult('0.');
+    else
+      setResult(result + x);
+  };
+
+  function cleanResult() {
+    setResult('');
+    return result;
   };
 
   return (
@@ -18,6 +26,7 @@ function App() {
       </div>
       <ButtonTab
         updateResult={updateResult}
+        cleanResult={cleanResult}
       />
     </div>
   );

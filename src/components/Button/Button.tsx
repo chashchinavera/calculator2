@@ -38,25 +38,25 @@ const Button: React.FC<ButtonProps> = ({
     if (numbers.some(number => {
       return number === children
     }))
-      return updateResult(children)
+      updateResult(children);
 
     if (signs.some(sign => {
       return sign === children
     }))
-      return console.log(children)
+      return console.log(children);
 
     if (children === '=')
-      return console.log(children)
+      return console.log(children);
 
     if (children === 'ac')
-      return console.log(children)
+      console.log('clean');
+    updateResult(children);
 
     if (children === '+/-')
-      return console.log(children)
+      return console.log(children);
 
-    else 
-    return console.log('a')
-  }
+    else return;
+  };
 
   return (
     <button className={buttonClasses} onClick={handleClick}>
