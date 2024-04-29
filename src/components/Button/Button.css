@@ -12,6 +12,7 @@
 
 .button:active {
     opacity: 0.3;
+    transition: opacity 0s;
 }
 
 .button__children {
