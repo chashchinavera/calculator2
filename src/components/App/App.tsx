@@ -10,37 +10,48 @@ function App() {
   const [sign, setSign] = useState('');
   const [finished, setFinished] = useState(false);
 
+  function sliceResult(x) {
+    setResult(result.slice(0, -1) + x);
+  };
+
   function updateResult(x: string) {
-    if (x === '.' && result === '')
-      setResult('0.');
+    if (x === '.' && result === '') {
+      setResult('0' + x);
+    } else if (x === '.' && signs.some(s => {
+      return s === result[result.length - 1]
+    })) {
+      setResult(result + '0' + x);
+    } else if (signs.some(s => {
+      return s === x
+    }) && signs.some(s => {
+      return s === result[result.length - 1]
+    })) {
+      sliceResult(x);
+    }
     else
       setResult(result + x);
-    console.log('1')
   };
 
   function addSign(x: string) {
-    if (sign === '') {
+    if (sign === '' && result !== '' && '.' !== result[result.length - 1]) {
       setSign(x);
-      console.log(sign)
       updateResult(x);
+    } else if (sign === '' && result === '') {
+      setResult('');
+      setSign('');
+    } else if ('.' === result[result.length - 1]) {
+      sliceResult(x);
+      setSign('');
+    } else {
+      sliceResult(x);
+      setSign(x);
     }
-    else {
-      // setSign(x);
-      console.log('false', sign);
-      // setResult(result + x);
-    }
-
-    // setSign(x)
-    // setResult(result + sign)
-    console.log(sign)
   };
 
   function cleanResult() {
     setResult('');
     setSign('');
     setFinished(false);
-    console.log(sign);
-    console.log('clean')
   };
 
   return (

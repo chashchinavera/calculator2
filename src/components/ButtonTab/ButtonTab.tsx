@@ -20,7 +20,7 @@ function ButtonTab({ updateResult, cleanResult, addSign }) {
                 children='%'
                 background='grey'
                 column='normal'
-                updateResult={updateResult}
+                updateResult={addSign}
             />
             <Button
                 children='÷'
