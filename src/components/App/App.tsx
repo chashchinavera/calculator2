@@ -48,6 +48,10 @@ function App() {
     }
   };
 
+  function getResult() {
+    setResult(eval(result))
+  };
+
   function cleanResult() {
     setResult('');
     setSign('');
@@ -63,6 +67,7 @@ function App() {
         updateResult={updateResult}
         cleanResult={cleanResult}
         addSign={addSign}
+        getResult={getResult}
       />
     </div>
   );
