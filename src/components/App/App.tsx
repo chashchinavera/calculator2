@@ -10,12 +10,18 @@ function App() {
   const [sign, setSign] = useState('');
   const [finished, setFinished] = useState(false);
 
-  function sliceResult(x) {
+  function sliceResult(x: string) {
     setResult(result.slice(0, -1) + x);
   };
 
   function updateResult(x: string) {
-    if (signs.some(s => {
+    if (x === '.' && result === '') {
+      setResult('0' + x);
+    } else if (x === '.' && signs.some(s => {
+      return s === result[result.length - 1]
+    })) {
+      setResult(result + '0' + x);
+    } else if (signs.some(s => {
       return s === x
     }) && signs.some(s => {
       return s === result[result.length - 1]
@@ -27,33 +33,29 @@ function App() {
   };
 
   function addSign(x: string) {
-    if (sign === '' && result !== '' && '.' !== result[result.length - 1]) {
+    if (sign === '' && result === '') {
+      setResult('');
+      setSign('');;
+    } else if ('.' === result[result.length - 1]) {
+      sliceResult(x);
+    } else {
+      setResult(result + x);
+      setSign(x);
+    }
+  };
+
+
+  function addPoint(x: string) {
+    if (sign === '' && result !== '' && x !== result[result.length - 1]) {
       setSign(x);
       updateResult(x);
-    } else if (sign === '' && result === '') {
-      setResult('');
-      setSign('');
-    } else if ('.' === result[result.length - 1]) {
+    } else if (x === result[result.length - 1]) {
       sliceResult(x);
       setSign('');
     } else {
-      setResult(x);
-      setSign(x);
+      updateResult(x);
     }
   };
-
-  function addPoint(x: string) {
-    if (result === '') {
-      setResult('0' + x);
-    } else if (signs.some(s => {
-      return s === result[result.length - 1]
-    })) {
-      setResult(result + '0' + x);
-    } else {
-      setResult(result + x);
-    }
-  };
-
 
   function getResult() {
     setResult(eval(result));
@@ -74,8 +76,8 @@ function App() {
         updateResult={updateResult}
         cleanResult={cleanResult}
         addSign={addSign}
-        addPoint={addPoint}
         getResult={getResult}
+        addPoint={addPoint}
       />
     </div>
   );
