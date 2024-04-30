@@ -10,31 +10,37 @@ function App() {
   const [sign, setSign] = useState('');
   const [finished, setFinished] = useState(false);
 
-
-
-  function addSign(x: string) {
-    if (sign !== '') {
-      setSign(x);
-      setResult(result + x);
-      console.log(sign, result)
-    }
-    else {
-      setSign(x)
-      setResult(result + x)
-    }
-  };
-
   function updateResult(x: string) {
     if (x === '.' && result === '')
       setResult('0.');
     else
       setResult(result + x);
+    console.log('1')
+  };
+
+  function addSign(x: string) {
+    if (sign === '') {
+      setSign(x);
+      console.log(sign)
+      updateResult(x);
+    }
+    else {
+      // setSign(x);
+      console.log('false', sign);
+      // setResult(result + x);
+    }
+
+    // setSign(x)
+    // setResult(result + sign)
+    console.log(sign)
   };
 
   function cleanResult() {
     setResult('');
     setSign('');
     setFinished(false);
+    console.log(sign);
+    console.log('clean')
   };
 
   return (

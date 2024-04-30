@@ -33,28 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   function handleClick() {
-    if (numbers.some(number => {
-      return number === children
-    }))
-      updateResult(children);
-
-    if (signs.some(sign => {
-      return sign === children
-    }))
-      console.log('sign');
-      updateResult(children);
-      
-    if (children === '=')
-      console.log(children);
-
-    if (children === 'ac')
-      console.log('clean');
     updateResult(children);
-
-    if (children === '+/-')
-      console.log(children);
-
-    else return;
   };
 
   return (
