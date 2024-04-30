@@ -57,7 +57,22 @@ function App() {
     }
   };
 
+  function replaceMultiply() {
+    if (result.includes('x')) {
+      setResult(result.replace('x', '*'))
+    } else return;
+  };
+
+  function replaceDivision() {
+    if (result.includes('÷')) {
+      setResult(result.replace('÷', '/'))
+    }
+    else return;
+  };
+
   function getResult() {
+    replaceMultiply();
+    replaceDivision();
     setResult(eval(result));
   };
 
