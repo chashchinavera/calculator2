@@ -15,13 +15,7 @@ function App() {
   };
 
   function updateResult(x: string) {
-    if (x === '.' && result === '') {
-      setResult('0' + x);
-    } else if (x === '.' && signs.some(s => {
-      return s === result[result.length - 1]
-    })) {
-      setResult(result + '0' + x);
-    } else if (signs.some(s => {
+    if (signs.some(s => {
       return s === x
     }) && signs.some(s => {
       return s === result[result.length - 1]
@@ -43,13 +37,26 @@ function App() {
       sliceResult(x);
       setSign('');
     } else {
-      sliceResult(x);
+      setResult(x);
       setSign(x);
     }
   };
 
+  function addPoint(x: string) {
+    if (result === '') {
+      setResult('0' + x);
+    } else if (signs.some(s => {
+      return s === result[result.length - 1]
+    })) {
+      setResult(result + '0' + x);
+    } else {
+      setResult(result + x);
+    }
+  };
+
+
   function getResult() {
-    setResult(eval(result))
+    setResult(eval(result));
   };
 
   function cleanResult() {
@@ -67,6 +74,7 @@ function App() {
         updateResult={updateResult}
         cleanResult={cleanResult}
         addSign={addSign}
+        addPoint={addPoint}
         getResult={getResult}
       />
     </div>
