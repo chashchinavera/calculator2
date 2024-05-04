@@ -38,6 +38,10 @@ function App() {
       setSign('');;
     } else if ('.' === result[result.length - 1]) {
       sliceResult(x);
+    } else if (signs.some(s => {
+      return s === result[result.length - 1]
+    })) {
+      sliceResult(x);
     } else {
       setResult(result + x);
       setSign(x);
@@ -59,13 +63,13 @@ function App() {
 
   function replaceMultiply() {
     if (result.includes('x')) {
-      setResult(result.replace('x', '*'))
+      setResult(result.replace(/x/g, '*'))
     } else return;
   };
 
   function replaceDivision() {
     if (result.includes('÷')) {
-      setResult(result.replace('÷', '/'))
+      setResult(result.replace(/÷/g, '/'))
     }
     else return;
   };
