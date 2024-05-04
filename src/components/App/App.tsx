@@ -90,10 +90,10 @@ function App() {
   function getResult() {
     if (result.endsWith('(-')) {
       setResult(result);
+
     } else if (bracket === true) {
-      console.log(bracket)
-      console.log(result)
-      setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*') + ')'))
+      setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*') + ')'));
+      
     } else
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
   };
