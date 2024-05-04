@@ -10,10 +10,12 @@ function App() {
   const [sign, setSign] = useState('');
   const [bracket, setBracket] = useState(false);
 
+  //Замена последнего символа
   function sliceResult(x: string) {
     setResult(result.slice(0, -1) + x);
   };
 
+  //Добавление минуса для создания отрицательного числа
   function changeSign() {
     if (numbers.some(n => {
       return n === result[result.length - 1]
@@ -27,6 +29,7 @@ function App() {
     }
   };
 
+  //Вывод значений на экран
   function updateResult(x: string) {
     if (x === '.' && result === '') {
       setResult('0' + x);
@@ -45,6 +48,7 @@ function App() {
       setResult(result + x);
   };
 
+  //Добавление знаков арифметических операций
   function addSign(x: string) {
     if (sign === '' && result === '') {
       setResult('');
@@ -75,6 +79,7 @@ function App() {
     }
   };
 
+  //Добавление точки
   function addPoint(x: string) {
     if (sign === '' && result !== '' && x !== result[result.length - 1]) {
       setSign(x);
@@ -87,17 +92,19 @@ function App() {
     }
   };
 
+  //Произведение рассчетов
   function getResult() {
     if (result.endsWith('(-')) {
       setResult(result);
 
     } else if (bracket === true) {
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*') + ')'));
-      
+
     } else
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
   };
 
+  //Отчистить экран
   function cleanResult() {
     setResult('');
     setSign('');
