@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ButtonTab from '../ButtonTab/ButtonTab.tsx';
 import { numbers, signs } from '../../utils/constats.ts';
 
@@ -8,9 +8,23 @@ function App() {
 
   const [result, setResult] = useState('');
   const [sign, setSign] = useState('');
+  const [bracket, setBracket] = useState(false);
 
   function sliceResult(x: string) {
     setResult(result.slice(0, -1) + x);
+  };
+
+  function changeSign() {
+    if (numbers.some(n => {
+      return n === result[result.length - 1]
+    })) {
+      setResult(result);
+    } else if (result.endsWith('(-')) {
+      setResult(result);
+    } else {
+      setResult(result + '(-')
+      setBracket(true);
+    }
   };
 
   function updateResult(x: string) {
@@ -34,13 +48,27 @@ function App() {
   function addSign(x: string) {
     if (sign === '' && result === '') {
       setResult('');
-      setSign('');;
+      setSign('');
+
     } else if ('.' === result[result.length - 1]) {
       sliceResult(x);
-    } else if (signs.some(s => {
+
+    } else if (bracket === false && signs.some(s => {
       return s === result[result.length - 1]
     })) {
       sliceResult(x);
+
+    } else if (bracket === true && numbers.some(n => {
+      return n === result[result.length - 1]
+    })) {
+      setResult(result + ')' + x);
+      setBracket(false);
+
+    } else if (bracket === true && numbers.some(n => {
+      return n !== result[result.length - 1]
+    })) {
+      setResult(result.slice(0, -3) + x);
+
     } else {
       setResult(result + x);
       setSign(x);
@@ -60,12 +88,20 @@ function App() {
   };
 
   function getResult() {
-    setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
+    if (result.endsWith('(-')) {
+      setResult(result);
+    } else if (bracket === true) {
+      console.log(bracket)
+      console.log(result)
+      setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*') + ')'))
+    } else
+      setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
   };
 
   function cleanResult() {
     setResult('');
     setSign('');
+    setBracket(false);
   };
 
   return (
@@ -79,6 +115,7 @@ function App() {
         addSign={addSign}
         getResult={getResult}
         addPoint={addPoint}
+        changeSign={changeSign}
       />
     </div>
   );
