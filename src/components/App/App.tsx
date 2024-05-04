@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ButtonTab from '../ButtonTab/ButtonTab.tsx';
 import { numbers, signs } from '../../utils/constats.ts';
 
@@ -47,7 +47,6 @@ function App() {
     }
   };
 
-
   function addPoint(x: string) {
     if (sign === '' && result !== '' && x !== result[result.length - 1]) {
       setSign(x);
@@ -60,23 +59,8 @@ function App() {
     }
   };
 
-  function replaceMultiply() {
-    if (result.includes('x')) {
-      setResult(result.replace(/x/g, '*'))
-    } else return;
-  };
-
-  function replaceDivision() {
-    if (result.includes('÷')) {
-      setResult(result.replace(/÷/g, '/'))
-    }
-    else return;
-  };
-
   function getResult() {
-    replaceMultiply();
-    replaceDivision();
-    setResult(eval(result));
+    setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/')));
   };
 
   function cleanResult() {
