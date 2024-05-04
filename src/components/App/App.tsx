@@ -60,7 +60,7 @@ function App() {
   };
 
   function getResult() {
-    setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/')));
+    setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
   };
 
   function cleanResult() {
