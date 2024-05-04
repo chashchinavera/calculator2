@@ -32,9 +32,7 @@ function App() {
 
   //Вывод значений на экран
   function updateResult(x: string) {
-    if (result === undefined) {
-      sliceResult(x);
-    } else if (x === '.' && result === '') {
+    if (x === '.' && result === '') {
       setResult('0' + x);
     } else if (x === '.' && signs.some(s => {
       return s === result[result.length - 1]
@@ -99,7 +97,7 @@ function App() {
 
   //Произведение рассчетов
   function getResult() {
-    if (result === undefined) {
+    if (result === '') {
       setResult('');
     } else if (result.endsWith('(-')) {
       setResult(result);
