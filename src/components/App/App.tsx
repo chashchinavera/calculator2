@@ -8,7 +8,6 @@ function App() {
 
   const [result, setResult] = useState('');
   const [sign, setSign] = useState('');
-  const [finished, setFinished] = useState(false);
 
   function sliceResult(x: string) {
     setResult(result.slice(0, -1) + x);
@@ -83,7 +82,6 @@ function App() {
   function cleanResult() {
     setResult('');
     setSign('');
-    setFinished(false);
   };
 
   return (
