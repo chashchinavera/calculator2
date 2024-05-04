@@ -1,6 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
-import { numbers, signs } from '../../utils/constats.ts';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string,

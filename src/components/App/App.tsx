@@ -9,6 +9,7 @@ function App() {
   const [result, setResult] = useState('');
   const [sign, setSign] = useState('');
   const [bracket, setBracket] = useState(false);
+  const [point, setPoint] = useState(false);
 
   //Замена последнего символа
   function sliceResult(x: string) {
@@ -22,7 +23,7 @@ function App() {
     })) {
       setResult(result);
     } else if (result.endsWith('(-')) {
-      setResult(result);
+      setResult(result.slice(0, -2));
     } else {
       setResult(result + '(-')
       setBracket(true);
@@ -31,7 +32,9 @@ function App() {
 
   //Вывод значений на экран
   function updateResult(x: string) {
-    if (x === '.' && result === '') {
+    if (result === undefined) {
+      sliceResult(x);
+    } else if (x === '.' && result === '') {
       setResult('0' + x);
     } else if (x === '.' && signs.some(s => {
       return s === result[result.length - 1]
@@ -76,7 +79,8 @@ function App() {
     } else {
       setResult(result + x);
       setSign(x);
-    }
+    };
+    setPoint(false);
   };
 
   //Добавление точки
@@ -87,21 +91,27 @@ function App() {
     } else if (x === result[result.length - 1]) {
       sliceResult(x);
       setSign('');
-    } else {
+    } else if (point === false) {
       updateResult(x);
-    }
+    };
+    setPoint(true);
   };
 
   //Произведение рассчетов
   function getResult() {
-    if (result.endsWith('(-')) {
+    if (result === undefined) {
+      setResult('');
+    } else if (result.endsWith('(-')) {
       setResult(result);
 
     } else if (bracket === true) {
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*') + ')'));
 
-    } else
+    } else {
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
+    };
+    setBracket(false);
+    setPoint(false);
   };
 
   //Отчистить экран
@@ -109,6 +119,7 @@ function App() {
     setResult('');
     setSign('');
     setBracket(false);
+    setPoint(false);
   };
 
   return (
