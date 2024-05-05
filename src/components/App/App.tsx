@@ -22,8 +22,10 @@ function App() {
       return n === result[result.length - 1]
     })) {
       setResult(result);
+
     } else if (result.endsWith('(-')) {
       setResult(result.slice(0, -2));
+
     } else {
       setResult(result + '(-')
       setBracket(true);
@@ -34,19 +36,23 @@ function App() {
   function updateResult(x: string) {
     if (x === '.' && result === '') {
       setResult('0' + x);
+      setPoint(true);
+
     } else if (x === '.' && signs.some(s => {
       return s === result[result.length - 1]
     })) {
       setResult(result + '0' + x);
+
     } else if (signs.some(s => {
       return s === x
     }) && signs.some(s => {
       return s === result[result.length - 1]
     })) {
       sliceResult(x);
-    }
-    else
+
+    } else {
       setResult(result + x);
+    }
   };
 
   //Добавление знаков арифметических операций
@@ -78,20 +84,24 @@ function App() {
       setResult(result + x);
       setSign(x);
     };
+
     setPoint(false);
   };
 
   //Добавление точки
   function addPoint(x: string) {
-    if (sign === '' && result !== '' && x !== result[result.length - 1]) {
+    if (sign === '' && result !== '' && x !== result[result.length - 1] && point === false) {
       setSign(x);
       updateResult(x);
+
     } else if (x === result[result.length - 1]) {
       sliceResult(x);
       setSign('');
+
     } else if (point === false) {
       updateResult(x);
     };
+
     setPoint(true);
   };
 
@@ -99,6 +109,7 @@ function App() {
   function getResult() {
     if (result === '') {
       setResult('');
+
     } else if (result.endsWith('(-')) {
       setResult(result);
 
@@ -108,6 +119,7 @@ function App() {
     } else {
       setResult(eval(result.replace(/x/g, '*').replace(/÷/g, '/').replace(/%/g, '/100*')));
     };
+
     setBracket(false);
     setPoint(false);
   };
